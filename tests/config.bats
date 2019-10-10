@@ -182,7 +182,8 @@ services:
 
 	# cleanup here
 	rm -rf .docksal
-	fin config generate
+	# Run non-interactively to skip user input when testing locally
+	echo "fin config generate" | bash
 
 	run fin config env
 	[[ $status == 0 ]] && 
@@ -197,6 +198,7 @@ services:
 @test "fin config generate: existing project" {
 	[[ $SKIP == 1 ]] && skip
 
+	# Run non-interactively to skip user input when testing locally
 	echo "fin config generate" | bash
 
 	run fin config env
